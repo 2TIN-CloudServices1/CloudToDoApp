@@ -1,0 +1,30 @@
+:host{
+  display:block;
+  height: 45px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 4 16px;
+  cursor: default;
+}
+section{
+  display: block;
+  width: 100%;
+}
+
+.title{
+
+}
+
+input[type="checkbox"]{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+button{
+  float: right;
+  height: 45px;
+  display: block;
+}
+
