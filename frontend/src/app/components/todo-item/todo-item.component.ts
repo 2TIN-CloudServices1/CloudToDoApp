@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/models/todo.model';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -9,6 +9,9 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo!: Todo;
+  highlight: boolean = false;
+  @Output() onDelete: EventEmitter<any> = new EventEmitter();
+
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
@@ -20,5 +23,12 @@ export class TodoItemComponent implements OnInit {
   }
 
   deleteTodo(): void{
+    this.todoService.deleteTodo(this.todo).subscribe(() => {
+      this.onDelete.emit();
+    });
+  }
+
+  toggleHighlight(): void{
+    this.highlight = !this.highlight;
   }
 }
