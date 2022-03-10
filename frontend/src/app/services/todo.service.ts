@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CarrouselItem } from '../CarrouselItem.model';
 import { Todo } from '../models/todo.model';
 
 @Injectable({
@@ -27,6 +28,10 @@ export class TodoService {
 
   deleteTodo(todo: Todo): Observable<any> {
     return this.http.delete(environment.apiurl + 'todo/' + todo._id);
+  }
+
+  getCarrouselItems(): Observable<CarrouselItem[]> {
+    return this.http.get<CarrouselItem[]>(environment.apiurl + 'carrousel');
   }
 
 

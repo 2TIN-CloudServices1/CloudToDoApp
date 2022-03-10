@@ -10,11 +10,13 @@ services:
       - DBURL=mongodb://mongo:27017/todo
     depends_on:
       - mongo
+
   frontend:
     build:
       context: ./frontend
     ports:
       - 80:80
+      
   mongo:
     image: mongo
     ports:

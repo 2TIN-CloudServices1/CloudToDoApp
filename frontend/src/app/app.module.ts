@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { CarrouselComponent } from './components/carrousel/carrousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTodoComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    CarrouselComponent
   ],
   imports: [
     BrowserModule,
