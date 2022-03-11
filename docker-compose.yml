@@ -1,10 +1,10 @@
-version: "3.8"
+version: "3.7"
 services:
   backend:
     build:
       context: ./backend
     ports:
-      - 8080:8080
+      - 8090:8080
     environment:
       - PORT=8080
       - DBURL=mongodb://mongo:27017/todo
@@ -14,6 +14,8 @@ services:
   frontend:
     build:
       context: ./frontend
+      args:
+        - APIURL=http://localhost:8090
     ports:
       - 80:80
       

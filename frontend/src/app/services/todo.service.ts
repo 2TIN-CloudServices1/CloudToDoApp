@@ -15,23 +15,23 @@ export class TodoService {
   }
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(environment.apiurl + 'todo');
+    return this.http.get<Todo[]>(environment.apiurl + '/todo');
   }
 
   addTodo(todo: Todo): Observable<any> {
-    return this.http.post(environment.apiurl + 'todo', todo);
+    return this.http.post(environment.apiurl + '/todo', todo);
   }
 
   updateTodo(todo: Todo): Observable<any> {
-    return this.http.put(environment.apiurl + 'todo/' + todo._id, todo);
+    return this.http.put(environment.apiurl + '/todo/' + todo._id, todo);
   }
 
   deleteTodo(todo: Todo): Observable<any> {
-    return this.http.delete(environment.apiurl + 'todo/' + todo._id);
+    return this.http.delete(environment.apiurl + '/todo/' + todo._id);
   }
 
   getCarrouselItems(): Observable<CarrouselItem[]> {
-    return this.http.get<CarrouselItem[]>(environment.apiurl + 'carrousel');
+    return this.http.get<CarrouselItem[]>(environment.apiurl + '/carrousel');
   }
 
 

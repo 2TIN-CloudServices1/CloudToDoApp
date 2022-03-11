@@ -3,7 +3,7 @@
 Angular 12
 
 ## Backend url
-The backend API url is defined in the file `/frontend/environments/environment.prod.ts`. Change this to the appropriate URL before running `npm run build`!
+The backend API url is defined in the file `/frontend/environments/environment.prod.ts`. This value gets set by the `APIURL` argument in the `docker-compose.yml` file.
 ## Backend
 NodeJS + express + mongoose
 
