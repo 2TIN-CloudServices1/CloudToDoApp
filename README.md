@@ -20,6 +20,7 @@ The table name is set in `./backend/controllers/todo.controller.js` and can be m
 The connection to the database is managed by the AWS-SDK by default. but can be adjusted in `./backend/aws.js` and `docker-compose.yml`.
 
 ## Setup
-* make sure the `apiUrl` property in `./frontend/src/environments/environment.prod.ts` is correctly set
+* make sure the `APIURL` property in `.docker-compose.yml` is correctly set
+* make sure the DynamoDB is setup either on AWS or locally.
 * make sure the correct IAM roles are set *or* that the aws-sdk config is set in `./backend/aws.js` and `docker-compose.yml` (please don't provide tokens in the compose file directly).
 * run `docker-compose build && docker-compose up` to boot
