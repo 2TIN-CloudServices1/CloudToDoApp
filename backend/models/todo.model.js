@@ -1,11 +1,20 @@
-const mongoose = require('mongoose');
+const dynamoose = require("dynamoose");
 
-const TodoSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    label: { type: String, required: true },
-    completed: { type: Boolean, default: false },
-    createdAt: { type: Date, default: Date.now },
+const TodoSchema = new dynamoose.Schema({
+    "title": String,
+    "label": String,
+    "completed": Boolean,
+}, {
+    "saveUnknown": true,
+    "timestamps": true
 });
 
-const Todo = mongoose.model('Todo', TodoSchema);
-module.exports = Todo
+const Todo = dynamoose.model('Todo', TodoSchema);
+
+Todo.create({
+    "title": "testitem",
+    "label": "testlabel",
+    "completed": false,
+    "createdAt": Date.now()
+});
+module.exports = Todo;
