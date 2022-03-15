@@ -17,6 +17,8 @@ image carrousel urls are located in `/backend/data/carrousel.json`
 ### Database
 MySQL with a database named `todo` present before launch.
 
+Note: Sequelize also supports other DBMS such as mariaDB, postgres, mssql, sqlite. See: https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
+
 ## Setup
 * Make sure the DBMS has a `todo` database (or use the docker container. The `init.sql` file creates this database)
 * make sure the `APIURL` property in `docker-compose.yml` is correctly set to point to your API.
