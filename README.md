@@ -1,4 +1,6 @@
 # PXL 3 tier web application sample app
+This repo contains 3 branches. The `main` branch has the app running on a mongoDB database. The branch `dynamo-db` uses AWS dynamoDB as a database. The branch `sequelize` has the app running on a MySQL database.
+
 ## frontend
 Angular 12
 
