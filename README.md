@@ -13,12 +13,12 @@ You could also manually build the application (`npm run build`, see contents `Do
 Lambda functions are found in the folder `backend`. Each subfolder is a new lambda function.
 
 Make sure you provide the correct execution roles for the lambda functions. Setup an API gateway with the following endpoints:
-- `GET https://apiurl/todo`
-- `GET https://apiurl/todo/{__id}`
-- `POST https://apiurl/todo`
-- `PUT https://apiurl/todo/{__id}`
-- `DELETE https://apiurl/todo/{__id}`
-- `GET https://apiurl/carrousel`
+- `GET https://apiurl/todo` directs to the lambda function `getTodo`
+- `GET https://apiurl/todo/{__id}` directs to the lambda function `getTodo`
+- `POST https://apiurl/todo` directs to the lambda function `addTodo`
+- `PUT https://apiurl/todo/{__id}` directs to the lambda function `updateTodo`
+- `DELETE https://apiurl/todo/{__id}` directs to the lambda function `removeTodo`
+- `GET https://apiurl/carrousel` directs to the lambda function `carrousel`
 
 
 Images for the carrousel are stored in a S3 bucket and are fetched by the carrousel lambda function.
