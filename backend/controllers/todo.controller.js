@@ -4,8 +4,10 @@ exports.getTodos = (req, res) => {
     Todo.findAll({}).then((err, todos) => {
         if (err) {
             res.send(err);
+        }else{
+            res.json(todos);
         }
-        res.json(todos);
+        
     });
 };
 
