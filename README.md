@@ -14,10 +14,10 @@ Lambda functions are found in the folder `backend`. Each subfolder is a new lamb
 
 Make sure you provide the correct execution roles for the lambda functions. Setup an API gateway with the following endpoints:
 - `GET https://apiurl/todo` directs to the lambda function `getTodo`
-- `GET https://apiurl/todo/{__id}` directs to the lambda function `getTodo`
+- `GET https://apiurl/todo/{id}` directs to the lambda function `getTodo`
 - `POST https://apiurl/todo` directs to the lambda function `addTodo`
-- `PUT https://apiurl/todo/{__id}` directs to the lambda function `updateTodo`
-- `DELETE https://apiurl/todo/{__id}` directs to the lambda function `removeTodo`
+- `PUT https://apiurl/todo/{id}` directs to the lambda function `updateTodo`
+- `DELETE https://apiurl/todo/{id}` directs to the lambda function `removeTodo`
 - `GET https://apiurl/carrousel` directs to the lambda function `carrousel`
 
 
