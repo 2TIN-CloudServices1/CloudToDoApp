@@ -10,7 +10,7 @@ const s3 = new AWS.S3({
 
 carrouselRouter.get('', (req, res) => {
     const params = {
-        Bucket: '11904402-pe-bucket',
+        Bucket: process.env.BUCKET,
     };
 
     s3.listObjectsV2(params, (err, data) => {
