@@ -1,36 +1,40 @@
 const express = require('express');
 const carrouselRouter = express.Router();
-const { S3Client, ListObjectsV2Command, GetObjectCommand } = require('@aws-sdk/client-s3');
-const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
-const bucketName = '';
-const region = 'us-east-1';
-const listPublicFiles = async () => {
-  try {
-    const client = new S3Client({
-        region: region,
-    });
-    const command = new ListObjectsV2Command({ Bucket: bucketName });
-    const result = await client.send(command);
-    const publicUrls = await Promise.all(
-        result.Contents
-        .filter(obj => obj.Size > 0)
-        .map(async obj => {
-          const getObjectCommand = new GetObjectCommand({ Bucket: bucketName, Key: obj.Key });
-          const url = await getSignedUrl(client, getObjectCommand, { expiresIn: 3600 });
-          return { url: url };
-        })
-    );
-    console.log('publicUrls', publicUrls);
-    return publicUrls;
-  } catch (err) {
-    console.error('Error retrieving object URLs from S3 bucket:', err.message);
-    return [];
-  }
-};
 
-carrouselRouter.get('', async (req, res) => {
-    const publicUrls = await listPublicFiles();
-    res.json(publicUrls);
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    region: 'us-east-1',
+});
+
+carrouselRouter.get('', (req, res) => {
+    const params = {
+        Bucket: process.env.BUCKET,
+    };
+
+    s3.listObjectsV2(params, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        const jpgImages = data.Contents.filter((obj) => {
+            return obj.Key.endsWith('.jpg');
+        });
+
+        const images = jpgImages.map((obj) => {
+            const url = s3.getSignedUrl('getObject', {
+                Bucket: params.Bucket,
+                Key: obj.Key,
+                Expires: 60,
+            });
+            return { url };
+        });
+
+        res.json(images);
+    });
 });
 
 module.exports = carrouselRouter;
+
